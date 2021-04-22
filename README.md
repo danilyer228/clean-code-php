@@ -1,70 +1,66 @@
-# Clean Code PHP
+# Чистий код PHP
 
-## Table of Contents
+## Зміст
 
-  1. [Introduction](#introduction)
-  2. [Variables](#variables)
-     * [Use meaningful and pronounceable variable names](#use-meaningful-and-pronounceable-variable-names)
-     * [Use the same vocabulary for the same type of variable](#use-the-same-vocabulary-for-the-same-type-of-variable)
-     * [Use searchable names (part 1)](#use-searchable-names-part-1)
-     * [Use searchable names (part 2)](#use-searchable-names-part-2)
-     * [Use explanatory variables](#use-explanatory-variables)
-     * [Avoid nesting too deeply and return early (part 1)](#avoid-nesting-too-deeply-and-return-early-part-1)
-     * [Avoid nesting too deeply and return early (part 2)](#avoid-nesting-too-deeply-and-return-early-part-2)
-     * [Avoid Mental Mapping](#avoid-mental-mapping)
-     * [Don't add unneeded context](#dont-add-unneeded-context)
-     * [Use default arguments instead of short circuiting or conditionals](#use-default-arguments-instead-of-short-circuiting-or-conditionals)
-  3. [Comparison](#comparison)
-     * [Use identical comparison](#use-identical-comparison)
-     * [Null coalescing operator](#null-coalescing-operator)
-  4. [Functions](#functions)
-     * [Function arguments (2 or fewer ideally)](#function-arguments-2-or-fewer-ideally)
-     * [Function names should say what they do](#function-names-should-say-what-they-do)
-     * [Functions should only be one level of abstraction](#functions-should-only-be-one-level-of-abstraction)
-     * [Don't use flags as function parameters](#dont-use-flags-as-function-parameters)
-     * [Avoid Side Effects](#avoid-side-effects)
-     * [Don't write to global functions](#dont-write-to-global-functions)
-     * [Don't use a Singleton pattern](#dont-use-a-singleton-pattern)
-     * [Encapsulate conditionals](#encapsulate-conditionals)
-     * [Avoid negative conditionals](#avoid-negative-conditionals)
-     * [Avoid conditionals](#avoid-conditionals)
-     * [Avoid type-checking (part 1)](#avoid-type-checking-part-1)
-     * [Avoid type-checking (part 2)](#avoid-type-checking-part-2)
-     * [Remove dead code](#remove-dead-code)
-  5. [Objects and Data Structures](#objects-and-data-structures)
-     * [Use object encapsulation](#use-object-encapsulation)
-     * [Make objects have private/protected members](#make-objects-have-privateprotected-members)
-  6. [Classes](#classes)
-     * [Prefer composition over inheritance](#prefer-composition-over-inheritance)
-     * [Avoid fluent interfaces](#avoid-fluent-interfaces)
-     * [Prefer final classes](#prefer-final-classes)
+  1. [Вступ](#вступ)
+  2. [Змінні](#змінні)
+     * [Використовуйте значущі та легковимовні назви змінних](#використовуйте-значущі-та-легковимовні-назви-змінних)
+     * [Використовуйте одну назву для змінніх з однаковою метою](#використовуйте-одну-назву-для-змінніх-з-однаковою-метою)
+     * [Використовуйте інтуїтивні для пошуку назвви (частина 1)](#використовуйте-інтуїтивні-для-пошуку-назвви-(частина-1))
+     * [Використовуйте інтуїтивні для пошуку назвви (частина 2)](#використовуйте-інтуїтивні-для-пошуку-назвви-(частина-2))
+     * [Використовуйте пояснювальні змінні](#використовуйте-пояснювальні-змінні)
+     * [Уникайте глибокої вкладенності (частина 1)](#уникайте-глибокої-вкладенності-(частина-1))
+     * [Уникайте глибокої вкладенності (частина 2)](#уникайте-глибокої-вкладенності-(частина-2))
+     * [Уникайте неявних супоставлень](#уникайте-неявних-супоставлень)
+     * [Не додавайте зайвого контексту](#не-додавайте-зайвого-контексту)
+     * [Використовуйте аргументи за замовчуванням замість скорочених або умовних](#використовуйте-аргументи-за-замовчуванням-замість-скорочених-або-умовних)
+  3. [Порівняння](#порівняння)
+     * [Використоуйте ідентичне зрівняння](#використоуйте-ідентичне-зрівняння)
+     * [Оператор об'єднання з null](#оператор-об'єднання-з-null)
+  4. [Функції](#функції)
+     * [Аргументи функцій (в ідеалі не більше двох)](#аргументи-функцій-(в-ідеалі-не-більше-двох))
+     * [Назви функцій мають говорити самі за себе](#назви-функцій-мають-говорити-самі-за-себе)
+     * [Функція має бути одним рінем абстракції](#функція-має-бути-одним-рінем-абстракції)
+     * [Не використовуйте прапорці як параметри функції](#не-використовуйте-прапорці-як-параметри-функції)
+     * [Уникайте сторонніх ефектів](#уникайте-сторонніх-ефектів)
+     * [Не пишіть в глобальні функції](#не-пишіть-в-глобальні-функції)
+     * [Не використовуйте паттерн Одинак](#не-використовуйте-паттерн-одинак)
+     * [Інкапсулюйте умовні конструкції](#інкапсулюйте-умовні-конструкції)
+     * [Уникайте негативних умовних виразів](#уникайте-негативних-умовних-виразів)
+     * [Уникайте умоних виразів](#уникайте-умоних-виразів)
+     * [Уникайте перевірки типів (частина 1)](#уникайте-перевірки-типів-(частина-1))
+     * [Уникайте перевірки типів (частина 2)](#уникайте-перевірки-типів-(частина-2))
+     * [Позбавлюйтесь мертвого коду](#позбавлюйтесь-мертвого-коду)
+  5. [Об'єкти та структури даних](#об'єкти-та-структури-даних)
+     * [Використовуйте інкапсуляцію об'єктів](#використовуйте-інкапсуляцію-об'єктів)
+     * [Об'єкт повинен мати private/protected компоненти](#об'єкт-повинен-мати-private/protected-компоненти)
+  6. [Класи](#класи)
+     * [Композиція ліпша від успадкування](#композиція-ліпша-від-успадкування)
+     * [Уникайте Fluent interface](#уникайте-fluent-interface)
+     * [Надавайте перевагу final-класам](#надавайте-перевагу-final-класам)
   7. [SOLID](#solid)
-     * [Single Responsibility Principle (SRP)](#single-responsibility-principle-srp)
-     * [Open/Closed Principle (OCP)](#openclosed-principle-ocp)
-     * [Liskov Substitution Principle (LSP)](#liskov-substitution-principle-lsp)
-     * [Interface Segregation Principle (ISP)](#interface-segregation-principle-isp)
-     * [Dependency Inversion Principle (DIP)](#dependency-inversion-principle-dip)
-  8. [Don’t repeat yourself (DRY)](#dont-repeat-yourself-dry)
-  9. [Translations](#translations)
+     * [Принцип єдиної відповідальності (SRP)](#принцип-єдиної-відповідальності-(srp))
+     * [Принцип відкритості/закритості (OCP)](#принцип-відкритості/закритості-(ocp))
+     * [Принцип підстановки Лісков (LSP)](#принцип-підстановки-Лісков-(lsp))
+     * [Принцип розділення інтерфейсу (ISP)](#принцип-розділення-інтерфейсу-(isp))
+     * [Принцип інверсії залежностей (DIP)](#принцип-інверсії-залежностей-(dip))
+  8. [Не повторюйся (DRY)](#не-повторюйся-(dry))
+  9. [Переклади](#переклади)
 
-## Introduction
+## Вступ
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for PHP. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in PHP.
+Принципи розробки ПЗ з книги Роберта Мартіна [*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
+адаптовані для PHP. Це не гайд по стилю кодування. Це гайд по створенню легкого для читання, перевикористання та рефакторингу PHP коду.
 
-Not every principle herein has to be strictly followed, and even fewer will be universally
-agreed upon. These are guidelines and nothing more, but they are ones codified over many
-years of collective experience by the authors of *Clean Code*.
+Не кожен з цих принципів має бути строго дотриманий. З частиною з них не всі зможуть погодитись. Це просто рекомендації, не більше, але всі вони кодовані багаторічним досвідом автора *Clean Code*.
 
-Inspired from [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript).
+Натхненний [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript).
 
-Although many developers still use PHP 5, most of the examples in this article only work with PHP 7.1+.
+Хоча багато розробників досі використовують PHP 5, більшість прикладів з цієї статті працюють тільки з PHP 7.1+
 
-## Variables
+## Змінні
 
-### Use meaningful and pronounceable variable names
+### Використовуйте значущі та легковимовні назви змінних
 
 **Bad:**
 
@@ -80,7 +76,7 @@ $currentDate = $moment->format('y-m-d');
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### Використовуйте одну назву для змінніх з однаковою метою
 
 **Bad:**
 
@@ -99,7 +95,7 @@ getUser();
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use searchable names (part 1)
+### Використовуйте інтуїтивні для пошуку назвви (частина 1)
 
 We will read more code than we will ever write. It's important that the code we do write is
 readable and searchable. By *not* naming variables that end up being meaningful for
@@ -119,7 +115,7 @@ $result = $serializer->serialize($data, 448);
 $json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
-### Use searchable names (part 2)
+### Використовуйте інтуїтивні для пошуку назвви (частина 2)
 
 **Bad:**
 
@@ -166,7 +162,7 @@ $user->access ^= User::ACCESS_CREATE;
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use explanatory variables
+### Використовуйте пояснювальні змінні
 
 **Bad:**
 
@@ -205,7 +201,7 @@ saveCityZipCode($matches['city'], $matches['zipCode']);
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid nesting too deeply and return early (part 1)
+### Уникайте глибокої вкладенності (частина 1)
 
 Too many if-else statements can make your code hard to follow. Explicit is better
 than implicit.
@@ -250,7 +246,7 @@ function isShopOpen(string $day): bool
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid nesting too deeply and return early (part 2)
+### Уникайте глибокої вкладенності (частина 2)
 
 **Bad:**
 
@@ -289,7 +285,7 @@ function fibonacci(int $n): int
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid Mental Mapping
+### Уникайте неявних супоставлень
 
 Don’t force the reader of your code to translate what the variable means.
 Explicit is better than implicit.
@@ -328,7 +324,7 @@ foreach ($locations as $location) {
 
 **[⬆ back to top](#table-of-contents)**
 
-### Don't add unneeded context
+### Уникайте зайвого контексту
 
 If your class/object name tells you something, don't repeat that in your
 variable name.
@@ -365,7 +361,7 @@ class Car
 
 **[⬆ back to top](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### Використовуйте аргументи за замовчуванням замість скорочених або умовних
 
 **Not good:**
 
@@ -403,9 +399,9 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 
 **[⬆ back to top](#table-of-contents)**
 
-## Comparison
+## Порівняння
 
-### Use [identical comparison](http://php.net/manual/en/language.operators.comparison.php)
+### Використовуйте [ідентичне порівняння](http://php.net/manual/en/language.operators.comparison.php)
 
 **Not good:**
 
@@ -440,7 +436,7 @@ The comparison `$a !== $b` returns `TRUE`.
 
 **[⬆ back to top](#table-of-contents)**
 
-### Null coalescing operator
+### Оператор об'єднання з null
 
 Null coalescing is a new operator [introduced in PHP 7](https://www.php.net/manual/en/migration70.new-features.php). The null coalescing operator `??` has been added as syntactic sugar for the common case of needing to use a ternary in conjunction with `isset()`. It returns its first operand if it exists and is not `null`; otherwise it returns its second operand.
 
@@ -463,9 +459,9 @@ $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 
 **[⬆ back to top](#table-of-contents)**
 
-## Functions
+## Функції
 
-### Function arguments (2 or fewer ideally)
+### Аргументи функцій (в ідеалі не більше двох)
 
 Limiting the amount of function parameters is incredibly important because it makes
 testing your function easier. Having more than three leads to a combinatorial explosion
@@ -561,7 +557,7 @@ class Questionnaire
 
 **[⬆ back to top](#table-of-contents)**
 
-### Function names should say what they do
+### Назви функцій мають говорити самі за себе
 
 **Bad:**
 
@@ -601,7 +597,7 @@ $message->send();
 
 **[⬆ back to top](#table-of-contents)**
 
-### Functions should only be one level of abstraction
+### Функція має бути одним рінем абстракції
 
 When you have more than one level of abstraction your function is usually
 doing too much. Splitting up functions leads to reusability and easier
@@ -737,9 +733,9 @@ class BetterPHPAlternative
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#вступ)**
 
-### Don't use flags as function parameters
+### Не використовуйте прапорці як параметри функції
 
 Flags tell your user that this function does more than one thing. Functions should
 do one thing. Split out your functions if they are following different code paths
@@ -774,7 +770,7 @@ function createTempFile(string $name): void
 
 **[⬆ back to top](#table-of-contents)**
 
-### Avoid Side Effects
+### Уникайте сторонніх ефектів
 
 A function produces a side effect if it does anything other than take a value in and
 return another value or values. A side effect could be writing to a file, modifying
