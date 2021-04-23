@@ -460,16 +460,16 @@ $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 
 ### Аргументи функцій (в ідеалі не більше двох)
 
-Limiting the amount of function parameters is incredibly important because it makes
-testing your function easier. Having more than three leads to a combinatorial explosion
-where you have to test tons of different cases with each separate argument.
+Обмеження кількості параметрів функції надзвичайно важливо, оскільки це робить
+легшим її тестування. Наявність більш як трьох параметрів призводить до комбінаторного вибуху
+коли вам доведеться перевірити безліч різних варіантів з кожним окремим аргументом.
 
-Zero arguments is the ideal case. One or two arguments is ok, and three should be avoided.
-Anything more than that should be consolidated. Usually, if you have more than two
-arguments then your function is trying to do too much. In cases where it's not, most
-of the time a higher-level object will suffice as an argument.
+Відсутність аргументів - ідеальний варіант. Один або два - це нормально, а трьох бажано уникати.
+Більшу кількість слід об'єднувати. Зазвичай, якщо ваша функція має більш як два
+аргументи, то це значить, що вона намагається зробити занадто багато. Якщо це не так,
+то, у більшості випадків, як аргумент слід використовувати об'єкт вищого рівня.
 
-**Bad:**
+**Погано:**
 
 ```php
 class Questionnaire
@@ -489,7 +489,7 @@ class Questionnaire
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 class Name
@@ -556,7 +556,7 @@ class Questionnaire
 
 ### Назви функцій мають говорити самі за себе
 
-**Bad:**
+**Погано:**
 
 ```php
 class Email
@@ -570,11 +570,11 @@ class Email
 }
 
 $message = new Email(...);
-// What is this? A handle for the message? Are we writing to a file now?
+// Що це? Розшифровка повідомлення? Запис у файл?
 $message->handle();
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 class Email
@@ -588,7 +588,7 @@ class Email
 }
 
 $message = new Email(...);
-// Clear and obvious
+// Ясно і зрозуміло
 $message->send();
 ```
 
@@ -596,11 +596,11 @@ $message->send();
 
 ### Функція має бути одним рінем абстракції
 
-When you have more than one level of abstraction your function is usually
-doing too much. Splitting up functions leads to reusability and easier
-testing.
+Коли у вас більше одного рівня абстракції, ваша функція зазвичай робить занадто багато.
+Розбиття функцій на більш прості дає можливість повторного використання коду та спрощення
+тестування.
 
-**Bad:**
+**Погано:**
 
 ```php
 function parseBetterPHPAlternative(string $code): void
@@ -628,9 +628,9 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
-**Bad too:**
+**Краще:**
 
-We have carried out some of the functionality, but the `parseBetterPHPAlternative()` function is still very complex and not testable.
+Ми провели деяку оптимізацію функціоналу, але функція `parseBetterPHPAlternative()` все ще дуже складна і не тестується.
 
 ```php
 function tokenize(string $code): array
@@ -670,9 +670,9 @@ function parseBetterPHPAlternative(string $code): void
 }
 ```
 
-**Good:**
+**Добре:**
 
-The best solution is move out the dependencies of `parseBetterPHPAlternative()` function.
+Найкращим рішенням є винести окремо залежностей функції `parseBetterPHPAlternative ()`.
 
 ```php
 class Tokenizer
@@ -734,11 +734,11 @@ class BetterPHPAlternative
 
 ### Не використовуйте прапорці як параметри функції
 
-Flags tell your user that this function does more than one thing. Functions should
-do one thing. Split out your functions if they are following different code paths
-based on a boolean.
+Прапори повідомляють вашому користувачеві, що ця функція робить декілька дій. 
+Функції повинні робити одне. Розділіть свої функції, якщо вони працюють по різному 
+в залежності від логічного значення.
 
-**Bad:**
+**Погано:**
 
 ```php
 function createFile(string $name, bool $temp = false): void
@@ -751,7 +751,7 @@ function createFile(string $name, bool $temp = false): void
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 function createFile(string $name): void
