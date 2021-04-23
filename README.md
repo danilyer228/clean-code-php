@@ -62,23 +62,23 @@
 
 ### Використовуйте значущі та легковимовні назви змінних
 
-**Bad:**
+**Погано:**
 
 ```php
 $ymdstr = $moment->format('y-m-d');
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 $currentDate = $moment->format('y-m-d');
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#table-of-contents)**
 
 ### Використовуйте одну назву для змінніх з однаковою метою
 
-**Bad:**
+**Погано:**
 
 ```php
 getUserInfo();
@@ -87,20 +87,17 @@ getUserRecord();
 getUserProfile();
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 getUser();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#table-of-contents)**
 
 ### Використовуйте інтуїтивні для пошуку назвви (частина 1)
 
-We will read more code than we will ever write. It's important that the code we do write is
-readable and searchable. By *not* naming variables that end up being meaningful for
-understanding our program, we hurt our readers.
-Make your names searchable.
+Ми прочитаємо набагато більше коду, ніж ми напишемо. Важливо щоб код який ми пишемо було легко читати й шукати в ньому. Коли ми *не* даємо імена нашим змінним, які мають значення для розуміння программи, ми завдаємо страждань нашим читачам. Робіть ваші імена доступними до пошуку. 
 
 **Bad:**
 
