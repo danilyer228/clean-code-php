@@ -245,7 +245,7 @@ function isShopOpen(string $day): bool
 
 ### Уникайте глибокої вкладенності (частина 2)
 
-**Bad:**
+**Погано:**
 
 ```php
 function fibonacci(int $n)
@@ -263,7 +263,7 @@ function fibonacci(int $n)
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 function fibonacci(int $n): int
@@ -284,10 +284,10 @@ function fibonacci(int $n): int
 
 ### Уникайте неявних супоставлень
 
-Don’t force the reader of your code to translate what the variable means.
-Explicit is better than implicit.
+Не змушуйте читача коду перекладати значення змінної.
+Явне краще, ніж неявне.
 
-**Bad:**
+**Погано:**
 
 ```php
 $l = ['Austin', 'New York', 'San Francisco'];
@@ -304,7 +304,7 @@ for ($i = 0; $i < count($l); $i++) {
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 $locations = ['Austin', 'New York', 'San Francisco'];
@@ -323,10 +323,10 @@ foreach ($locations as $location) {
 
 ### Уникайте зайвого контексту
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+Якщо ім'я класу/об'єкта вам щось говорить, не повторюйте цього в 
+назві змінної.
 
-**Bad:**
+**Погано:**
 
 ```php
 class Car
@@ -341,7 +341,7 @@ class Car
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 class Car
