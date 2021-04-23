@@ -95,7 +95,7 @@ getUser();
 
 **[⬆ назад вгору](#table-of-contents)**
 
-### Використовуйте інтуїтивні для пошуку назвви (частина 1)
+### Використовуйте інтуїтивні для пошуку назви (частина 1)
 
 Ми прочитаємо набагато більше коду, ніж ми напишемо. Важливо щоб код який ми пишемо було легко читати й шукати в ньому. Коли ми *не* даємо імена нашим змінним, які мають значення для розуміння программи, ми завдаємо страждань нашим читачам. Робіть ваші імена доступними до пошуку. 
 
@@ -112,7 +112,7 @@ $result = $serializer->serialize($data, 448);
 $json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 ```
 
-### Використовуйте інтуїтивні для пошуку назвви (частина 2)
+### Використовуйте інтуїтивні для пошуку назви (частина 2)
 
 **Bad:**
 
@@ -161,7 +161,7 @@ $user->access ^= User::ACCESS_CREATE;
 
 ### Використовуйте пояснювальні змінні
 
-**Bad:**
+**Погано:**
 
 ```php
 $address = 'One Infinite Loop, Cupertino 95014';
@@ -171,9 +171,9 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches[1], $matches[2]);
 ```
 
-**Not bad:**
+**Краще:**
 
-It's better, but we are still heavily dependent on regex.
+Це краще, але ми все ще залишаємося залежними від регулярного виразу.
 
 ```php
 $address = 'One Infinite Loop, Cupertino 95014';
@@ -184,9 +184,9 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($city, $zipCode);
 ```
 
-**Good:**
+**Добре:**
 
-Decrease dependence on regex by naming subpatterns.
+Зменшіть залежність від регулярного виразу, називаючи підтипи.
 
 ```php
 $address = 'One Infinite Loop, Cupertino 95014';
@@ -200,10 +200,10 @@ saveCityZipCode($matches['city'], $matches['zipCode']);
 
 ### Уникайте глибокої вкладенності (частина 1)
 
-Too many if-else statements can make your code hard to follow. Explicit is better
-than implicit.
+Занадто багато конструкцій if-else можуть ускладнити сприйняття й слідкування вашого коду. Явний краще
+ніж неявний.
 
-**Bad:**
+**Погано:**
 
 ```php
 function isShopOpen($day): bool
@@ -226,7 +226,7 @@ function isShopOpen($day): bool
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 function isShopOpen(string $day): bool
