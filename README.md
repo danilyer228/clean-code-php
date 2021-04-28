@@ -12,7 +12,7 @@
      * [Уникайте глибокої вкладенності (частина 1)](#уникайте-глибокої-вкладенності-(частина-1))
      * [Уникайте глибокої вкладенності (частина 2)](#уникайте-глибокої-вкладенності-(частина-2))
      * [Уникайте неявних супоставлень](#уникайте-неявних-супоставлень)
-     * [Не додавайте зайвого контексту](#не-додавайте-зайвого-контексту)
+     * [Уникайте зайвого контексту](#уникайте-зайвого-контексту)
      * [Використовуйте аргументи за замовчуванням замість скорочених або умовних](#використовуйте-аргументи-за-замовчуванням-замість-скорочених-або-умовних)
   3. [Порівняння](#порівняння)
      * [Використоуйте ідентичне зрівняння](#використоуйте-ідентичне-зрівняння)
@@ -74,7 +74,7 @@ $ymdstr = $moment->format('y-m-d');
 $currentDate = $moment->format('y-m-d');
 ```
 
-**[⬆ назад вгору](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Використовуйте одну назву для змінніх з однаковою метою
 
@@ -93,7 +93,7 @@ getUserProfile();
 getUser();
 ```
 
-**[⬆ назад вгору](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Використовуйте доступні для пошуку назви (частина 1)
 
@@ -157,7 +157,7 @@ if ($user->access & User::ACCESS_UPDATE) {
 $user->access ^= User::ACCESS_CREATE;
 ```
 
-**[⬆ назад вгору](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Використовуйте пояснювальні змінні
 
@@ -195,7 +195,7 @@ preg_match($cityZipCodeRegex, $address, $matches);
 saveCityZipCode($matches['city'], $matches['zipCode']);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Уникайте глибокої вкладенності (частина 1)
 
@@ -240,7 +240,7 @@ function isShopOpen(string $day): bool
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Уникайте глибокої вкладенності (частина 2)
 
@@ -279,7 +279,7 @@ function fibonacci(int $n): int
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Уникайте неявних супоставлень
 
@@ -318,7 +318,7 @@ foreach ($locations as $location) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Уникайте зайвого контексту
 
@@ -355,13 +355,13 @@ class Car
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Використовуйте аргументи за замовчуванням замість скорочених або умовних
 
-**Not good:**
+**Погано:**
 
-This is not good because `$breweryName` can be `NULL`.
+Це погано, тому що `$breweryName` може бути `NULL`.
 
 ```php
 function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
@@ -370,9 +370,9 @@ function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 }
 ```
 
-**Not bad:**
+**Краще:**
 
-This opinion is more understandable than the previous version, but it better controls the value of the variable.
+Цей варіант менш зрозумілий, але краще контролює значення змінної.
 
 ```php
 function createMicrobrewery($name = null): void
@@ -382,9 +382,9 @@ function createMicrobrewery($name = null): void
 }
 ```
 
-**Good:**
+**Добре:**
 
- You can use [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) and be sure that the `$breweryName` will not be `NULL`.
+ Ви можете скористатись [позначенням типу](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) та бути впевнені, що `$breweryName` не може бути `NULL`.
 
 ```php
 function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
@@ -393,7 +393,7 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ## Порівняння
 
@@ -430,7 +430,7 @@ if ($a !== $b) {
 
 The comparison `$a !== $b` returns `TRUE`.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Оператор об'єднання з null
 
@@ -453,7 +453,7 @@ if (isset($_GET['name'])) {
 $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ## Функції
 
@@ -551,7 +551,7 @@ class Questionnaire
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Назви функцій мають говорити самі за себе
 
@@ -591,7 +591,7 @@ $message = new Email(...);
 $message->send();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Функція має бути одним рінем абстракції
 
@@ -729,7 +729,7 @@ class BetterPHPAlternative
 }
 ```
 
-**[⬆ back to top](#вступ)**
+**[⬆ назад вгору](#вступ)**
 
 ### Не використовуйте прапорці як параметри функції
 
@@ -764,7 +764,7 @@ function createTempFile(string $name): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Уникайте сторонніх ефектів
 
@@ -820,7 +820,7 @@ var_dump($newName);
 // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Don't write to global functions
 
@@ -871,7 +871,7 @@ $configuration = new Configuration([
 
 And now you must use instance of `Configuration` in your application.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Don't use a Singleton pattern
 
@@ -932,7 +932,7 @@ $connection = new DBConnection($dsn);
 
 And now you must use instance of `DBConnection` in your application.
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Encapsulate conditionals
 
@@ -952,7 +952,7 @@ if ($article->isPublished()) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Avoid negative conditionals
 
@@ -982,7 +982,7 @@ if (isDOMNodePresent($node)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Avoid conditionals
 
@@ -1057,7 +1057,7 @@ class Cessna implements Airplane
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Avoid type-checking (part 1)
 
@@ -1088,7 +1088,7 @@ function travelToTexas(Vehicle $vehicle): void
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Avoid type-checking (part 2)
 
@@ -1124,7 +1124,7 @@ function combine(int $val1, int $val2): int
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Remove dead code
 
@@ -1161,7 +1161,7 @@ $request = requestModule($requestUrl);
 inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 
 ## Objects and Data Structures
@@ -1237,7 +1237,7 @@ $bankAccount->withdraw($shoesPrice);
 $balance = $bankAccount->getBalance();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Make objects have private/protected members
 
@@ -1290,7 +1290,7 @@ $employee = new Employee('John Doe');
 echo 'Employee name: ' . $employee->getName();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ## Classes
 
@@ -1393,7 +1393,7 @@ class Employee
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Avoid fluent interfaces
 
@@ -1501,7 +1501,7 @@ $car->setModel('F-150');
 $car->dump();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Prefer final classes
 
@@ -1566,7 +1566,7 @@ final class Car implements Vehicle
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ## SOLID
 
@@ -1654,7 +1654,7 @@ class UserSettings
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Open/Closed Principle (OCP)
 
@@ -1768,7 +1768,7 @@ class HttpRequester
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Liskov Substitution Principle (LSP)
 
@@ -1897,7 +1897,7 @@ foreach ($shapes as $shape) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Interface Segregation Principle (ISP)
 
@@ -1988,7 +1988,7 @@ class RobotEmployee implements Workable
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ### Dependency Inversion Principle (DIP)
 
@@ -2080,7 +2080,7 @@ class Manager
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ назад вгору](#зміст)**
 
 ## Don’t repeat yourself (DRY)
 
@@ -2126,68 +2126,4 @@ function showManagerList(array $managers): void
 {
     foreach ($managers as $manager) {
         $expectedSalary = $manager->calculateExpectedSalary();
-        $experience = $manager->getExperience();
-        $githubLink = $manager->getGithubLink();
-        $data = [$expectedSalary, $experience, $githubLink];
-
-        render($data);
-    }
-}
-```
-
-**Good:**
-
-```php
-function showList(array $employees): void
-{
-    foreach ($employees as $employee) {
-        $expectedSalary = $employee->calculateExpectedSalary();
-        $experience = $employee->getExperience();
-        $githubLink = $employee->getGithubLink();
-        $data = [$expectedSalary, $experience, $githubLink];
-
-        render($data);
-    }
-}
-```
-
-**Very good:**
-
-It is better to use a compact version of the code.
-
-```php
-function showList(array $employees): void
-{
-    foreach ($employees as $employee) {
-        render([$employee->calculateExpectedSalary(), $employee->getExperience(), $employee->getGithubLink()]);
-    }
-}
-```
-
-**[⬆ back to top](#table-of-contents)**
-
-## Translations
-
-This is also available in other languages:
-
-* :cn: **Chinese:**
-   * [php-cpm/clean-code-php](https://github.com/php-cpm/clean-code-php)
-* :ru: **Russian:**
-   * [peter-gribanov/clean-code-php](https://github.com/peter-gribanov/clean-code-php)
-* :es: **Spanish:**
-   * [fikoborquez/clean-code-php](https://github.com/fikoborquez/clean-code-php)
-* :brazil: **Portuguese:**
-   * [fabioars/clean-code-php](https://github.com/fabioars/clean-code-php)
-   * [jeanjar/clean-code-php](https://github.com/jeanjar/clean-code-php/tree/pt-br)
-* :thailand: **Thai:**
-   * [panuwizzle/clean-code-php](https://github.com/panuwizzle/clean-code-php)
-* :fr: **French:**
-   * [errorname/clean-code-php](https://github.com/errorname/clean-code-php)
-* :vietnam: **Vietnamese**
-   * [viethuongdev/clean-code-php](https://github.com/viethuongdev/clean-code-php)
-* :kr: **Korean:**
-   * [yujineeee/clean-code-php](https://github.com/yujineeee/clean-code-php)
-* :tr: **Turkish:**
-   * [anilozmen/clean-code-php](https://github.com/anilozmen/clean-code-php)
-
-**[⬆ back to top](#table-of-contents)**
+        $
