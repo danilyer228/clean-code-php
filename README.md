@@ -15,7 +15,7 @@
      * [Уникайте зайвого контексту](#уникайте-зайвого-контексту)
      * [Використовуйте аргументи за замовчуванням замість скорочених або умовних](#використовуйте-аргументи-за-замовчуванням-замість-скорочених-або-умовних)
   3. [Порівняння](#порівняння)
-     * [Використоуйте ідентичне зрівняння](#використоуйте-ідентичне-зрівняння)
+     * [Використовуйте ідентичне порівняння](#використовуйте-ідентичне-порівняння])
      * [Оператор об'єднання з null](#оператор-об'єднання-з-null)
   4. [Функції](#функції)
      * [Аргументи функцій (в ідеалі не більше двох)](#аргументи-функцій-(в-ідеалі-не-більше-двох))
@@ -399,44 +399,44 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 
 ### Використовуйте [ідентичне порівняння](http://php.net/manual/en/language.operators.comparison.php)
 
-**Not good:**
+**Погано:**
 
-The simple comparison will convert the string in an integer.
+Звичайне порівняння конвертує рядок в число.
 
 ```php
 $a = '42';
 $b = 42;
 
 if ($a != $b) {
-    // The expression will always pass
+    // Вираз спрацює у будь-якому разі
 }
 ```
 
-The comparison `$a != $b` returns `FALSE` but in fact it's `TRUE`!
-The string `42` is different than the integer `42`.
+Порівняння `$a != $b` поверне `FALSE` але фактично це `TRUE`!
+Рядок `42` не одне й те саме, що число `42`.
 
-**Good:**
+**Добре:**
 
-The identical comparison will compare type and value.
+Ідентичне порівняння звірить типи даних.
 
 ```php
 $a = '42';
 $b = 42;
 
 if ($a !== $b) {
-    // The expression is verified
+    // Вираз спрацює
 }
 ```
 
-The comparison `$a !== $b` returns `TRUE`.
+Порівняння `$a !== $b` поверне `TRUE`.
 
 **[⬆ назад вгору](#зміст)**
 
 ### Оператор об'єднання з null
 
-Null coalescing is a new operator [introduced in PHP 7](https://www.php.net/manual/en/migration70.new-features.php). The null coalescing operator `??` has been added as syntactic sugar for the common case of needing to use a ternary in conjunction with `isset()`. It returns its first operand if it exists and is not `null`; otherwise it returns its second operand.
+Об'єднання з Null - це новий оператор, [представлений в PHP 7](https://www.php.net/manual/en/migration70.new-features.php).  Цей оператор `??` було додано як синтаксичний цукор для випадків, коли потрібно використати тернарний оператор у поєднанні з `isset()`. Він повертає перший операнд, якщо він існує і не є `null`; інакше він повертає другий операнд.
 
-**Bad:**
+**Погано:**
 
 ```php
 if (isset($_GET['name'])) {
@@ -448,7 +448,7 @@ if (isset($_GET['name'])) {
 }
 ```
 
-**Good:**
+**Добре:**
 ```php
 $name = $_GET['name'] ?? $_POST['name'] ?? 'nobody';
 ```
