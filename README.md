@@ -768,25 +768,23 @@ function createTempFile(string $name): void
 
 ### Уникайте сторонніх ефектів
 
-A function produces a side effect if it does anything other than take a value in and
-return another value or values. A side effect could be writing to a file, modifying
-some global variable, or accidentally wiring all your money to a stranger.
+Функція виробляє сторонній ефект, якщо она робить щось окрім в себе прийняття значення та повернення іншого значення(значень).
+Стороннім ефектом може бути запис у файл, модифікація глобальної змінної,
+або випадкова передача всіх вваших грошей незнайомцю.
 
-Now, you do need to have side effects in a program on occasion. Like the previous
-example, you might need to write to a file. What you want to do is to centralize where
-you are doing this. Don't have several functions and classes that write to a particular
-file. Have one service that does it. One and only one.
+Іноді вам доводиться мати побічні ефекти у програмі. Як у попередньому випадку, вам може знадобитись запис у файл.
+Краще робити це централізоано. Не обирайте кілька функцій і класів, які пишуть у якийсь файл.
+Замість цього використовуйте один сервіс. Єдиний.
 
-The main point is to avoid common pitfalls like sharing state between objects without
-any structure, using mutable data types that can be written to by anything, and not
-centralizing where your side effects occur. If you can do this, you will be happier
-than the vast majority of other programmers.
+Головна мета - уникнення розповсюджених помилок на зразок спільного стану для кількох об'єктів без
+будь-якої структури; використання змінюваних типів даних, що можуть бути перезаписані чимось; відсутність централізованої
+обробки побічних ефектів. Якщо ви зможете це зробити - ви будете щасливіші, ніж більша частина програмістів.
 
-**Bad:**
+**Погано:**
 
 ```php
-// Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// Функція зсилається на глобальну змінну.
+// Якщо ми зробимо іншу функцію, що використає це ім'я, вона може зламатися через те, що в значенні змінної вже масив.
 $name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName(): void
@@ -802,7 +800,7 @@ var_dump($name);
 // ['Ryan', 'McDermott'];
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 function splitIntoFirstAndLastName(string $name): array
