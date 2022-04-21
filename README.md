@@ -119,7 +119,7 @@ $json = $serializer->serialize($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
 ```php
 class User
 {
-    // Що за дідкько та 7ка?
+    // Що за дідько та 7ка?
     public $access = 7;
 }
 
@@ -820,15 +820,14 @@ var_dump($newName);
 
 **[⬆ назад вгору](#зміст)**
 
-### Don't write to global functions
+### Не пишіть глобальні функції
 
-Polluting globals is a bad practice in many languages because you could clash with another
-library and the user of your API would be none-the-wiser until they get an exception in
-production. Let's think about an example: what if you wanted to have configuration array?
-You could write global function like `config()`, but it could clash with another library
-that tried to do the same thing.
+Забруднюючі глобальні змінні - погана практика у багатьох мовах тому що є ризик конфлікту з іншою бібліотекою
+та користувач вашого API нічого не знатиме, доки не зловить виключення у продакшені.
+Візьмемо наприклад: що, якщо ви захочете мати конфігураційний масив?
+Ви напишите глобальну функцію на кшталт `config()`, але скоріш за все вона буде конфліктувати з іншою бібліотекою, яка зробть те саме.
 
-**Bad:**
+**Погано:**
 
 ```php
 function config(): array
@@ -839,7 +838,7 @@ function config(): array
 }
 ```
 
-**Good:**
+**Добре:**
 
 ```php
 class Configuration
@@ -853,13 +852,13 @@ class Configuration
 
     public function get(string $key): ?string
     {
-        // null coalescing operator
+        // оператор об'єднання з null
         return $this->configuration[$key] ?? null;
     }
 }
 ```
 
-Load configuration and create instance of `Configuration` class
+Завантаження конфігурації та створення екземпляру класа `Configuration`
 
 ```php
 $configuration = new Configuration([
@@ -867,7 +866,7 @@ $configuration = new Configuration([
 ]);
 ```
 
-And now you must use instance of `Configuration` in your application.
+Тепер ви можете використовувати екземпляр `Configuration` у своєму додатку.
 
 **[⬆ назад вгору](#зміст)**
 
